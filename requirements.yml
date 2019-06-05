@@ -1,0 +1,15 @@
+- src: oefenweb.swapfile
+- src: geerlingguy.docker
+- src: geerlingguy.git
+- src: geerlingguy.nginx
+- src: geerlingguy.php-versions
+- src: geerlingguy.php
+- src: geerlingguy.composer
+- src: geerlingguy.memcached
+- src: geerlingguy.mysql
+- src: geerlingguy.mailhog
+- src: geerlingguy.postgresql
+- src: geerlingguy.redis
+- src: stephdewit.nvm
+- src: cowops.debian-beanstalkd
+- src: ypsman.aws_cli

@@ -1,0 +1,31 @@
+---
+- name: Setup
+  hosts: all
+  become: yes
+
+  vars_files:
+    - vars/main.yml
+
+  pre_tasks:
+    - name: Install the official MySQL repo
+      apt:
+        deb: https://dev.mysql.com/get/mysql-apt-config_0.8.13-1_all.deb
+        state: present
+
+  roles:
+    - oefenweb.swapfile
+    - geerlingguy.docker
+    - geerlingguy.git
+    - geerlingguy.nginx
+    - geerlingguy.php-versions
+    - geerlingguy.php
+    - geerlingguy.composer
+    - geerlingguy.memcached
+    - geerlingguy.mysql
+    - geerlingguy.mailhog
+    - geerlingguy.postgresql
+    - geerlingguy.redis
+    - stephdewit.nvm
+    - cowops.debian-beanstalkd
+    - ypsman.aws_cli
+
