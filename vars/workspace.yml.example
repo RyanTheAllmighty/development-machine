@@ -3,5 +3,10 @@ checkout_ssh_keys:
   - id_rsa
   - id_rsa.pub
 
+checkout_gpg_keys_root_dir: "~/.gpg"
+checkout_gpg_keys:
+  - id_gpg
+  - id_gpg.pub
+
 git_repos:
   - { repo: "git@github.com:ansible/ansible.git", directory: "ansible/ansible", key: "id_rsa" }

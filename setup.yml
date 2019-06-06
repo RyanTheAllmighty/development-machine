@@ -14,7 +14,10 @@
     - name: install python mysql bindings
       apt: name=python-mysqldb state=installed
     - name: Install build dependencies
-      apt: name=build-essential state=latest update_cache=yes
+      apt: name={{ item }} state=latest update_cache=yes
+      with_items:
+        - build-essential
+        - unzip
 
   roles:
     - oefenweb.swapfile

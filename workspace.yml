@@ -16,6 +16,32 @@
         dest: "{{ ansible_user_dir }}/.ssh/{{ item }}"
         mode: 0600
       with_items: "{{ checkout_ssh_keys }}"
+    - name: Copy gpg keys
+      copy:
+        src: "{{ checkout_gpg_keys_root_dir }}/{{ item }}"
+        dest: "{{ ansible_user_dir }}/.gpg/{{ item }}"
+        mode: 0600
+      with_items: "{{ checkout_gpg_keys }}"
+    - name: Set git user.name
+      git_config:
+        name: user.name
+        scope: global
+        value: "{{ git_user_name }}"
+    - name: Set git user.email
+      git_config:
+        name: user.email
+        scope: global
+        value: "{{ git_user_email }}"
+    - name: Set git user.signingKey
+      git_config:
+        name: user.signingKey
+        scope: global
+        value: "{{ git_signing_key }}"
+    - name: Set git commit.gpgsign
+      git_config:
+        name: commit.gpgsign
+        scope: global
+        value: "true"
     - name: Clone Git repositories
       git:
         repo: "{{ item.repo }}"
