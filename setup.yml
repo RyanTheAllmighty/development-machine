@@ -11,6 +11,8 @@
       apt:
         deb: https://dev.mysql.com/get/mysql-apt-config_0.8.13-1_all.deb
         state: present
+    - name: install python mysql bindings
+      apt: name=python-mysqldb state=installed
 
   roles:
     - oefenweb.swapfile
