@@ -1,0 +1,7 @@
+checkout_ssh_keys_root_dir: "~/.ssh"
+checkout_ssh_keys:
+  - id_rsa
+  - id_rsa.pub
+
+git_repos:
+  - { repo: "git@github.com:ansible/ansible.git", directory: "ansible/ansible", key: "id_rsa" }

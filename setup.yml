@@ -4,7 +4,7 @@
   become: yes
 
   vars_files:
-    - vars/main.yml
+    - vars/setup.yml
 
   pre_tasks:
     - name: Install the official MySQL repo
@@ -13,6 +13,8 @@
         state: present
     - name: install python mysql bindings
       apt: name=python-mysqldb state=installed
+    - name: Install build dependencies
+      apt: name=build-essential state=latest update_cache=yes
 
   roles:
     - oefenweb.swapfile

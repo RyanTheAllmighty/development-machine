@@ -1,0 +1,26 @@
+---
+- name: Checkout
+  hosts: all
+
+  vars_files:
+    - vars/workspace.yml
+
+  tasks:
+    - name: Create workspace folder in users home directory
+      file:
+        path: "{{ ansible_user_dir }}/workspace"
+        state: directory
+    - name: Copy ssh keys
+      copy:
+        src: "{{ checkout_ssh_keys_root_dir }}/{{ item }}"
+        dest: "{{ ansible_user_dir }}/.ssh/{{ item }}"
+        mode: 0600
+      with_items: "{{ checkout_ssh_keys }}"
+    - name: Clone Git repositories
+      git:
+        repo: "{{ item.repo }}"
+        dest: "{{ ansible_user_dir }}/workspace/{{ item.directory }}"
+        key_file: "{{ ansible_user_dir }}/.ssh/{{ item.key }}"
+        update: no
+        accept_hostkey: yes
+      with_items: "{{ git_repos }}"
