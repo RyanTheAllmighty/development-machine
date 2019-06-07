@@ -13,7 +13,6 @@ and will install the following:
 -   [Nginx](https://www.nginx.com/)
 -   [Mysql Server](https://dev.mysql.com/)
 -   [PostgrSQL](https://www.postgresql.org/)
--   [NVM](https://github.com/nvm-sh/nvm)
 -   [Memcached](https://memcached.org/)
 -   [Redis](https://redis.io/)
 -   [Beanstalkd](https://beanstalkd.github.io/)

@@ -10,6 +10,5 @@
 - src: geerlingguy.mailhog
 - src: geerlingguy.postgresql
 - src: geerlingguy.redis
-- src: stephdewit.nvm
 - src: cowops.debian-beanstalkd
 - src: ypsman.aws_cli

@@ -11,6 +11,7 @@ nginx_remove_default_vhost: true
 nginx_sendfile: "off"
 nginx_client_max_body_size: "256m"
 
+php_install_recommends: false
 php_version: '7.3'
 php_enable_php_fpm: true
 php_packages:
@@ -56,6 +57,6 @@ postgresql_global_config_options:
 postgresql_hba_entries:
   - { type: local, database: all, user: postgres, auth_method: peer }
   - { type: local, database: all, user: all, auth_method: peer }
-  - { type: host, database: all, user: all, address: '*', auth_method: md5 }
+  - { type: host, database: all, user: all, address: '0.0.0.0/0', auth_method: md5 }
   - { type: host, database: all, user: all, address: '127.0.0.1/32', auth_method: md5 }
   - { type: host, database: all, user: all, address: '::1/128', auth_method: md5 }

@@ -1,0 +1,34 @@
+---
+  - import_role:
+      name: geerlingguy.postgresql
+
+  - include_role:
+      name: geerlingguy.postgresql
+      tasks_from: variables
+
+  - include_role:
+      name: geerlingguy.postgresql
+      tasks_from: setup-Debian
+
+  - include_role:
+      name: geerlingguy.postgresql
+      tasks_from: initialize
+
+  - include_role:
+      name: geerlingguy.postgresql
+      tasks_from: configure
+
+  - name: Ensure PostgreSQL is started and enabled on boot.
+    service:
+      name: "{{ postgresql_daemon }}"
+      state: "started"
+      enabled: "true"
+
+  - include_role:
+      name: geerlingguy.postgresql
+      tasks_from: users
+
+  - include_role:
+      name: geerlingguy.postgresql
+      tasks_from: databases
+

@@ -16,9 +16,12 @@
         deb: https://dev.mysql.com/get/mysql-apt-config_0.8.13-1_all.deb
         state: present
     - name: Install build dependencies
-      apt: name={{ item }} state=latest update_cache=yes
+      apt:
+        name: "{{ item }}"
+        state: latest
+        update_cache: yes
       with_items:
-        - python-mysqldb
+        - python3-mysqldb
         - build-essential
         - unzip
     - name: Enable passwordless sudo for sudo group
@@ -40,9 +43,8 @@
     - geerlingguy.memcached
     - geerlingguy.mysql
     - geerlingguy.mailhog
-    - geerlingguy.postgresql
+    - postgresql
     - geerlingguy.redis
-    - stephdewit.nvm
     - cowops.debian-beanstalkd
     - ypsman.aws_cli
     - setup_dotfiles
