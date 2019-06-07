@@ -43,8 +43,8 @@ Now check you can ping the host:
 ansible -i "HOSTNAME-OR-IP-HERE," -m ping
 ```
 
-Next you'll need to create a `vars/nginx-hosts.yml` file from the example provided at
-`vars/nginx-hosts.yml.example`.
+Next you'll need to create a `vars/config.yml` file from the example provided at
+`vars/config.yml.example`.
 
 To run the scripts, simply run:
 
@@ -57,9 +57,6 @@ ansible-playbook -i "HOSTNAME-OR-IP-HERE," setup.yml -v -K
 Once the machine has been setup, we can setup the workspace.
 
 This is the main working directory in `~/workspace` on the remote machine.
-
-You'll need to create a `vars/workspace.yml` file from the example provided at
-`vars/workspace.yml.example`.
 
 Then you can setup the workspace by running:
 

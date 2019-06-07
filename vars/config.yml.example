@@ -22,3 +22,34 @@ nginx_vhosts:
       ssl_certificate_key /etc/ssl/private/ssl-cert-snakeoil.key;
       ssl_protocols       TLSv1.1 TLSv1.2;
       ssl_ciphers         HIGH:!aNULL:!MD5;
+
+postgresql_users:
+  - name: example
+    password: secret
+    state: present
+
+postgresql_databases:
+  - name: example
+    owner: example
+    state: present
+
+mysql_databases:
+  - name: example
+mysql_users:
+  - name: example
+    host: "%"
+    password: secret
+    priv: "example.*:ALL"
+
+checkout_ssh_keys_root_dir: "~/.ssh"
+checkout_ssh_keys:
+  - id_rsa
+  - id_rsa.pub
+
+checkout_gpg_keys_root_dir: "~/.gpg"
+checkout_gpg_keys:
+  - id_gpg
+  - id_gpg.pub
+
+git_repos:
+  - { repo: "git@github.com:ansible/ansible.git", directory: "ansible/ansible", key: "id_rsa" }

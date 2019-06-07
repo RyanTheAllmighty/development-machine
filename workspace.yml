@@ -3,7 +3,7 @@
   hosts: all
 
   vars_files:
-    - vars/workspace.yml
+    - vars/config.yml
 
   tasks:
     - name: Create workspace folder in users home directory

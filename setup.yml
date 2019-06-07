@@ -5,7 +5,7 @@
 
   vars_files:
     - vars/setup.yml
-    - vars/nginx-hosts.yml
+    - vars/config.yml
 
   pre_tasks:
     - name: Install the official MySQL repo
