@@ -1,6 +1,3 @@
-nginx_remove_default_vhost: true
-nginx_sendfile: "off"
-nginx_client_max_body_size: "256m"
 nginx_vhosts:
   - listen: "443 ssl http2"
     server_name: "example.com"
