@@ -43,6 +43,9 @@ Now check you can ping the host:
 ansible -i "HOSTNAME-OR-IP-HERE," -m ping
 ```
 
+Next you'll need to create a `vars/nginx-hosts.yml` file from the example provided at
+`vars/nginx-hosts.yml.example`.
+
 To run the scripts, simply run:
 
 ```sh
