@@ -52,4 +52,7 @@ checkout_gpg_keys:
   - id_gpg.pub
 
 git_repos:
-  - { repo: "git@github.com:ansible/ansible.git", directory: "ansible/ansible", key: "id_rsa" }
+  - { repo: "git@github.com:ansible/ansible.git", directory: "ansible/ansible", key: "id_rsa", version: "master" }
+
+chown_things:
+  - { directory: "{{ ansible_user_dir }}/workspace/ansible/ansible", recurse: "yes", owner: "{{ ansible_user }}", group: "nginx" }

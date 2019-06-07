@@ -8,6 +8,9 @@
     - vars/config.yml
 
   pre_tasks:
+    - name: Update all packages to the latest version
+      apt:
+        upgrade: full
     - name: Install the official MySQL repo
       apt:
         deb: https://dev.mysql.com/get/mysql-apt-config_0.8.13-1_all.deb
