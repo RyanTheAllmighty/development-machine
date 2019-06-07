@@ -11,13 +11,19 @@
       apt:
         deb: https://dev.mysql.com/get/mysql-apt-config_0.8.13-1_all.deb
         state: present
-    - name: install python mysql bindings
-      apt: name=python-mysqldb state=installed
     - name: Install build dependencies
       apt: name={{ item }} state=latest update_cache=yes
       with_items:
+        - python-mysqldb
         - build-essential
         - unzip
+    - name: Enable passwordless sudo for sudo group
+      lineinfile:
+        path: /etc/sudoers
+        state: present
+        regexp: '^%sudo'
+        line: '%sudo ALL=(ALL) NOPASSWD: ALL'
+        validate: 'visudo -cf %s'
 
   roles:
     - oefenweb.swapfile
@@ -35,4 +41,6 @@
     - stephdewit.nvm
     - cowops.debian-beanstalkd
     - ypsman.aws_cli
+    - setup_dotfiles
+
 

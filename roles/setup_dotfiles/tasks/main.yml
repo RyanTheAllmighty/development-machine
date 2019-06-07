@@ -1,0 +1,23 @@
+---
+  - name: Download remote install
+    become: false
+    get_url:
+      url: https://raw.github.com/RyanTheAllmighty/dotfiles/master/remote-git-install.sh
+      dest: /tmp/remote-git-install.sh
+
+  - name: Mark remote-git-install.sh as executable
+    become: false
+    file:
+      dest: /tmp/remote-git-install.sh
+      mode: a+x
+
+  - name: Execute remote-git-install.sh
+    become: false
+    shell: /tmp/remote-git-install.sh
+    args:
+      creates: "{{ ansible_user_dir }}/.dotfiles/.system-setup"
+
+  - name: Remove remote-git-install.sh
+    file:
+      path: /tmp/remote-git-install.sh
+      state: absent
