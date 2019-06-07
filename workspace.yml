@@ -10,6 +10,10 @@
       file:
         path: "{{ ansible_user_dir }}/workspace"
         state: directory
+    - name: Create .gpg folder in users home directory
+      file:
+        path: "{{ ansible_user_dir }}/.gpg"
+        state: directory
     - name: Copy ssh keys
       copy:
         src: "{{ checkout_ssh_keys_root_dir }}/{{ item }}"
@@ -32,9 +36,9 @@
         name: user.email
         scope: global
         value: "{{ git_user_email }}"
-    - name: Set git user.signingKey
+    - name: Set git user.signingkey
       git_config:
-        name: user.signingKey
+        name: user.signingkey
         scope: global
         value: "{{ git_signing_key }}"
     - name: Set git commit.gpgsign
@@ -42,6 +46,10 @@
         name: commit.gpgsign
         scope: global
         value: "true"
+    - name: Add GPG_TTY to ~/.profile
+      lineinfile:
+        path: "{{ ansible_user_dir }}/.profile"
+        line: 'export GPG_TTY=$(tty)'
     - name: Clone Git repositories
       git:
         repo: "{{ item.repo }}"
