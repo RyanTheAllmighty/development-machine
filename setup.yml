@@ -13,7 +13,7 @@
         upgrade: full
     - name: Install the official MySQL repo
       apt:
-        deb: https://dev.mysql.com/get/mysql-apt-config_0.8.13-1_all.deb
+        deb: https://dev.mysql.com/get/mysql-apt-config_0.8.14-1_all.deb
         state: present
     - name: Install build dependencies
       apt:
